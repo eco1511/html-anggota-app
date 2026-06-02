@@ -227,150 +227,72 @@
             </div>
         </aside>
 
-        <!-- Main Content Area -->
+        <!-- Main Content Area: Halaman Jenjang -->
         <div class="flex-grow space-y-8">
             
-            <!-- Welcome Banner -->
-            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="relative z-10">
-                    <h1 class="text-2xl font-extrabold mb-1 text-slate-900">Selamat datang kembali, Admin! 👋</h1>
-                    <p class="text-slate-500">Kelola pendaftaran, verifikasi, dan database anggota secara real-time.</p>
+            <!-- Page Header & Action -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+                <div>
+                    <h1 class="text-2xl font-extrabold mb-1 text-slate-900">Data Master: Jenjang</h1>
+                    <p class="text-slate-500 text-sm">Kelola hierarki tingkatan kepengurusan organisasi.</p>
                 </div>
-                <!-- Decorative background elements -->
-                <div class="absolute right-0 top-0 w-64 h-full bg-gradient-to-l from-indigo-50 to-transparent pointer-events-none"></div>
-                <i class="fas fa-chart-line absolute -right-4 -bottom-8 text-9xl text-indigo-50 opacity-50 rotate-12 pointer-events-none"></i>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition shadow-sm shadow-indigo-200 flex items-center gap-2">
+                    <i class="fas fa-plus"></i> Tambah Jenjang
+                </button>
             </div>
 
-            <!-- KPI Stats Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <!-- Stat 1 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-indigo-200 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                            <i class="fas fa-users"></i>
-                        </div>
-                    </div>
-                    <p class="text-sm font-medium text-slate-500 mb-1">Total Anggota Aktif</p>
-                    <h3 class="text-2xl font-bold text-slate-800">1,240</h3>
-                </div>
-
-                <!-- Stat 2 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-red-200 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                            <i class="fas fa-user-clock"></i>
-                        </div>
-                        <span class="flex items-center gap-1.5 text-xs font-bold text-red-500">
-                            <span class="w-2 h-2 rounded-full bg-red-500 animate-custom-pulse"></span> Perlu Aksi
-                        </span>
-                    </div>
-                    <p class="text-sm font-medium text-slate-500 mb-1">Menunggu Verifikasi</p>
-                    <h3 class="text-2xl font-bold text-slate-800">12</h3>
-                </div>
-
-                <!-- Stat 3 -->
-                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-amber-200 transition">
-                    <div class="flex justify-between items-start mb-4">
-                        <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                    </div>
-                    <p class="text-sm font-medium text-slate-500 mb-1">Pengajuan Status</p>
-                    <h3 class="text-2xl font-bold text-slate-800">3</h3>
-                </div>
-
-            </div>
-
-            <!-- Pending Verifications Table -->
+            <!-- Data Table -->
             <section class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-                <div class="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900">Antrean Verifikasi Pendaftaran</h2>
-                        <p class="text-sm text-slate-500 mt-1">Calon anggota yang menunggu persetujuan admin.</p>
+                <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+                    <div class="relative w-64">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" placeholder="Cari jenjang..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
                     </div>
-                    <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">Lihat Semua (12) <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
                 </div>
                 
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
-                                <th class="px-6 py-3 font-semibold">Profil Pendaftar</th>
-                                <th class="px-6 py-3 font-semibold">NIK</th>
-                                <th class="px-6 py-3 font-semibold">Wilayah</th>
-                                <th class="px-6 py-3 font-semibold">Waktu Daftar</th>
-                                <th class="px-6 py-3 font-semibold text-center">Aksi</th>
+                                <th class="px-6 py-3 font-semibold w-16 text-center">No</th>
+                                <th class="px-6 py-3 font-semibold">Kode</th>
+                                <th class="px-6 py-3 font-semibold">Nama Jenjang</th>
+                                <th class="px-6 py-3 font-semibold">Keterangan</th>
+                                <th class="px-6 py-3 font-semibold text-center w-32">Aksi</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 text-sm">
-                            
-                            <!-- Row 1 -->
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
-                                            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=random" alt="Avatar">
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-slate-800">Budi Santoso</p>
-                                            <p class="text-xs text-slate-500">Anggota Biasa</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-mono text-slate-600 text-xs">327104151186****</td>
-                                <td class="px-6 py-4 text-slate-600">Kota Bogor</td>
-                                <td class="px-6 py-4 text-slate-500 text-xs">Hari ini, 09:14 WIB</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-center text-slate-500">1</td>
+                                <td class="px-6 py-4 font-mono text-xs font-bold text-slate-600">JNJ-001</td>
+                                <td class="px-6 py-4 font-semibold text-slate-800">Pusat / Nasional</td>
+                                <td class="px-6 py-4 text-slate-500">Tingkat kepengurusan pusat</td>
+                                <td class="px-6 py-4 text-center">
                                     <div class="flex justify-center gap-2">
-                                        <button class="w-8 h-8 rounded-lg bg-green-50 text-green-600 hover:bg-green-500 hover:text-white transition flex items-center justify-center" title="Setujui">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Tolak">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center justify-center" title="Detail Profil">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 hover:bg-amber-500 hover:text-white transition flex items-center justify-center" title="Edit"><i class="fas fa-pen text-xs"></i></button>
+                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Hapus"><i class="fas fa-trash text-xs"></i></button>
                                     </div>
                                 </td>
                             </tr>
-
-                            <!-- Row 2 -->
                             <tr class="hover:bg-slate-50 transition">
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
-                                            <img src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=random" alt="Avatar">
-                                        </div>
-                                        <div>
-                                            <p class="font-bold text-slate-800">Ahmad Fauzi</p>
-                                            <p class="text-xs text-slate-500">Pengurus Daerah</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 font-mono text-slate-600 text-xs">317201220490****</td>
-                                <td class="px-6 py-4 text-slate-600">Kota Depok</td>
-                                <td class="px-6 py-4 text-slate-500 text-xs">Kemarin, 14:30 WIB</td>
-                                <td class="px-6 py-4">
+                                <td class="px-6 py-4 text-center text-slate-500">2</td>
+                                <td class="px-6 py-4 font-mono text-xs font-bold text-slate-600">JNJ-002</td>
+                                <td class="px-6 py-4 font-semibold text-slate-800">Wilayah / Provinsi</td>
+                                <td class="px-6 py-4 text-slate-500">Tingkat kepengurusan provinsi</td>
+                                <td class="px-6 py-4 text-center">
                                     <div class="flex justify-center gap-2">
-                                        <button class="w-8 h-8 rounded-lg bg-green-50 text-green-600 hover:bg-green-500 hover:text-white transition flex items-center justify-center" title="Setujui">
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Tolak">
-                                            <i class="fas fa-times"></i>
-                                        </button>
-                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center justify-center" title="Detail Profil">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 hover:bg-amber-500 hover:text-white transition flex items-center justify-center" title="Edit"><i class="fas fa-pen text-xs"></i></button>
+                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Hapus"><i class="fas fa-trash text-xs"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                            
                         </tbody>
                     </table>
                 </div>
+                <div class="px-6 py-4 border-t border-slate-100 flex justify-between items-center text-sm text-slate-500">
+                    <span>Menampilkan 1 hingga 2 dari 2 data</span>
+                </div>
             </section>
-
         </div>
     </main>
 

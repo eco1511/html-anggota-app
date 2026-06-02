@@ -43,13 +43,112 @@
 
                 <div class="flex items-center gap-5">
                     <!-- Notifications -->
-                    <div class="relative cursor-pointer text-slate-400 hover:text-indigo-600 transition">
-                        <i class="fas fa-bell text-xl"></i>
-                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-50 border-2 border-white"></span>
-                        </span>
+                    <div class="relative group cursor-pointer text-slate-400 inline-block py-2">
+    
+                        <div class="hover:text-indigo-600 transition duration-300 relative">
+                            <i class="fas fa-bell text-xl"></i>
+                            <span class="absolute -top-2 -right-2 flex h-5 w-5">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-5 w-5 bg-red-500 border-2 border-white items-center justify-center text-[10px] font-bold text-white">4</span>
+                            </span>
+                        </div>
+                        <div class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl z-50 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 border border-slate-100">
+                            
+                            <div class="absolute -top-2 right-2 w-4 h-4 bg-white transform rotate-45 border-t border-l border-slate-100"></div>
+
+                            <div class="relative z-10 bg-white rounded-lg overflow-hidden text-left">
+                                <div class="px-4 py-3 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
+                                    <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider">Notifikasi SIORMAS</h3>
+                                    <span class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold cursor-pointer">Tandai semua dibaca</span>
+                                </div>
+
+                                <div class="max-h-80 overflow-y-auto">
+                                    
+                                    <a href="#" class="block px-4 py-3 hover:bg-indigo-50 transition border-b border-slate-50 group/item bg-indigo-50/30"> 
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover/item:bg-green-200 transition">
+                                                    <i class="fas fa-user-plus text-sm"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <div class="text-sm font-semibold text-slate-800">Pendaftaran Anggota Baru</div>
+                                                <div class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                                    Pengajuan atas nama <span class="font-bold text-slate-800">Budi Gunawan</span> untuk bergabung sebagai anggota<strong> Wilayah Kota Surabaya</strong>.
+                                                </div>
+                                                <div class="text-[10px] text-indigo-500 mt-1.5 flex items-center font-medium">
+                                                    <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-1.5"></span> Baru saja
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="block px-4 py-3 hover:bg-indigo-50 transition border-b border-slate-50 group/item bg-indigo-50/30">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover/item:bg-green-200 transition">
+                                                    <i class="fas fa-user-plus text-sm"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <div class="text-sm font-semibold text-slate-800">Pendaftaran Anggota Baru</div>
+                                                <div class="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                                                    Pengajuan atas nama <span class="font-bold text-slate-800">Siti Aminah</span> untuk bergabung sebagai anggota<strong> Pusat</strong>.
+                                                </div>
+                                                <div class="text-[10px] text-indigo-500 mt-1.5 flex items-center font-medium">
+                                                    <span class="w-1.5 h-1.5 bg-indigo-500 rounded-full mr-1.5"></span> 10 menit yang lalu
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    
+                                    <a href="#" class="block px-4 py-3 hover:bg-indigo-50 transition border-b border-slate-50 group/item">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 group-hover/item:bg-amber-200 transition">
+                                                    <i class="fas fa-user-edit text-sm"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <div class="text-sm font-medium text-slate-700">Mutasi & Status Anggota</div>
+                                                <div class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                                                    Pengajuan pembaruan status kepengurusan atas nama <span class="font-bold text-slate-700">Ahmad Rifai</span> di <strong> Wilayah Kota Surabaya</strong>.
+                                                </div>
+                                                <div class="text-[10px] text-slate-400 mt-1.5 flex items-center">
+                                                    <i class="far fa-clock mr-1"></i> 1 jam yang lalu
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="block px-4 py-3 hover:bg-indigo-50 transition border-b border-slate-50 group/item">
+                                        <div class="flex items-start">
+                                            <div class="flex-shrink-0 mt-1">
+                                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 group-hover/item:bg-amber-200 transition">
+                                                    <i class="fas fa-user-edit text-sm"></i>
+                                                </div>
+                                            </div>
+                                            <div class="ml-3">
+                                                <div class="text-sm font-medium text-slate-700">Mutasi & Status Anggota</div>
+                                                <div class="text-xs text-slate-500 mt-1.5 leading-relaxed">
+                                                    Pengajuan mutasi pindah cabang atas nama <span class="font-bold text-slate-700">Dwi Saputra</span> dari <strong>Wilayah Kota Surabaya</strong>.
+                                                </div>
+                                                <div class="text-[10px] text-slate-400 mt-1.5 flex items-center">
+                                                    <i class="far fa-clock mr-1"></i> 3 jam yang lalu
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                
+                                <a href="#" class="block px-4 py-3 bg-slate-50 text-center text-xs text-indigo-600 font-semibold hover:text-indigo-800 hover:bg-slate-100 transition border-t border-slate-200">
+                                    Lihat Semua Pengajuan (12)
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                    <!---->
 
                     <div class="h-8 w-px bg-slate-200 mx-2"></div>
 
@@ -68,24 +167,60 @@
     <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
         
         <!-- Sidebar Navigation -->
+        <!-- Sidebar Navigation -->
         <aside class="w-full lg:w-64 flex-shrink-0">
             <div class="bg-white rounded-2xl border border-slate-200 p-4 sticky top-24 shadow-sm">
                 <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3">Menu Admin</div>
                 <nav class="space-y-1.5">
-                    <a href="#dashboard" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                    <!-- Ringkasan -->
+                    <a href="#dashboard" class="flex items-center justify-between px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-semibold transition">
                         <div class="flex items-center gap-3"><i class="fas fa-chart-pie w-5"></i> Ringkasan</div>
                     </a>
-                    <a href="#verifikasi" class="flex items-center justify-between px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-semibold transition">
+                    
+                    <!-- Verifikasi -->
+                    <a href="#verifikasi" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
                         <div class="flex items-center gap-3"><i class="fas fa-user-check w-5"></i> Verifikasi Anggota</div>
                         <span class="bg-red-100 text-red-600 py-0.5 px-2 rounded-full text-xs font-bold">12</span>
                     </a>
+                    
+                    <!-- Database -->
                     <a href="#database" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
                         <i class="fas fa-database w-5"></i> Database Anggota
                     </a>
+                    
+                    <!-- Mutasi & Status -->
                     <a href="#pengajuan" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
                         <div class="flex items-center gap-3"><i class="fas fa-exchange-alt w-5"></i> Mutasi & Status</div>
                         <span class="bg-amber-100 text-amber-600 py-0.5 px-2 rounded-full text-xs font-bold">3</span>
                     </a>
+
+                    <!-- Data Master Dropdown -->
+                    <div class="space-y-1">
+                        <button onclick="document.getElementById('menu-master').classList.toggle('hidden'); document.getElementById('arrow-master').classList.toggle('rotate-180');" class="w-full flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition outline-none">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-cube w-5"></i> Data Master
+                            </div>
+                            <i id="arrow-master" class="fas fa-chevron-down text-[10px] transition-transform duration-300"></i>
+                        </button>
+                        
+                        <div id="menu-master" class="hidden pl-9 pr-2 py-1 space-y-1 border-l-2 border-slate-100 ml-5">
+                            <a href="#jabatan" class="block px-3 py-2 text-sm text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition duration-200">
+                                Jabatan
+                            </a>
+                            <a href="#jenjang" class="block px-3 py-2 text-sm text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg font-medium transition duration-200">
+                                Jenjang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Garis Pemisah (Opsional) -->
+                    <div class="h-px bg-slate-200 my-2 mx-3"></div>
+
+                    <!-- Pengaturan -->
+                    <a href="#pengaturan" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <i class="fas fa-cog w-5"></i> Pengaturan
+                    </a>
+
                 </nav>
             </div>
         </aside>
