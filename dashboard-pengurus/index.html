@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pengurus | PRISMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        
+        /* Custom animation for pulse dot */
+        @keyframes custom-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .animate-custom-pulse {
+            animation: custom-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                        <i class="fas fa-shield-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-bold tracking-tighter text-slate-800 leading-none mt-1">PRISMA</span>
+                        <span class="text-[10px] font-semibold text-indigo-600 tracking-widest uppercase">Admin Panel</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <!-- Notifications -->
+                    <div class="relative cursor-pointer text-slate-400 hover:text-indigo-600 transition">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-50 border-2 border-white"></span>
+                        </span>
+                    </div>
+
+                    <div class="h-8 w-px bg-slate-200 mx-2"></div>
+
+                    <!-- Profile -->
+                    <div class="hidden sm:flex flex-col items-end mr-2">
+                        <span class="text-sm font-bold text-slate-800">Admin</span>
+                        <span class="text-xs text-indigo-600 font-medium">Admin</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=e0e7ff&color=4f46e5" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 sticky top-24 shadow-sm">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3">Menu Admin</div>
+                <nav class="space-y-1.5">
+                    <a href="#dashboard" class="flex items-center justify-between px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-semibold transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-chart-pie w-5"></i> Ringkasan</div>
+                    </a>
+                    <a href="#verifikasi" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-user-check w-5"></i> Verifikasi Anggota</div>
+                        <span class="bg-red-100 text-red-600 py-0.5 px-2 rounded-full text-xs font-bold">12</span>
+                    </a>
+                    <a href="#database" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <i class="fas fa-database w-5"></i> Database Anggota
+                    </a>
+                    <a href="#pengajuan" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-exchange-alt w-5"></i> Mutasi & Status</div>
+                        <span class="bg-amber-100 text-amber-600 py-0.5 px-2 rounded-full text-xs font-bold">3</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-grow space-y-8">
+            
+            <!-- Welcome Banner -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="relative z-10">
+                    <h1 class="text-2xl font-extrabold mb-1 text-slate-900">Selamat datang kembali, Admin! 👋</h1>
+                    <p class="text-slate-500">Kelola pendaftaran, verifikasi, dan database anggota secara real-time.</p>
+                </div>
+                <!-- Decorative background elements -->
+                <div class="absolute right-0 top-0 w-64 h-full bg-gradient-to-l from-indigo-50 to-transparent pointer-events-none"></div>
+                <i class="fas fa-chart-line absolute -right-4 -bottom-8 text-9xl text-indigo-50 opacity-50 rotate-12 pointer-events-none"></i>
+            </div>
+
+            <!-- KPI Stats Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Stat 1 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-indigo-200 transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md"><i class="fas fa-arrow-up"></i> 12%</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-1">Total Anggota Aktif</p>
+                    <h3 class="text-2xl font-bold text-slate-800">1,240</h3>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-red-200 transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-red-50 text-red-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                            <i class="fas fa-user-clock"></i>
+                        </div>
+                        <span class="flex items-center gap-1.5 text-xs font-bold text-red-500">
+                            <span class="w-2 h-2 rounded-full bg-red-500 animate-custom-pulse"></span> Perlu Aksi
+                        </span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-1">Menunggu Verifikasi</p>
+                    <h3 class="text-2xl font-bold text-slate-800">12</h3>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden group hover:border-amber-200 transition">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-lg flex items-center justify-center text-lg group-hover:scale-110 transition-transform">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-sm font-medium text-slate-500 mb-1">Pengajuan Status</p>
+                    <h3 class="text-2xl font-bold text-slate-800">3</h3>
+                </div>
+
+            </div>
+
+            <!-- Pending Verifications Table -->
+            <section class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-6 py-5 border-b border-slate-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900">Antrean Verifikasi Pendaftaran</h2>
+                        <p class="text-sm text-slate-500 mt-1">Calon anggota yang menunggu persetujuan admin.</p>
+                    </div>
+                    <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800">Lihat Semua (12) <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                <th class="px-6 py-3 font-semibold">Profil Pendaftar</th>
+                                <th class="px-6 py-3 font-semibold">NIK</th>
+                                <th class="px-6 py-3 font-semibold">Wilayah</th>
+                                <th class="px-6 py-3 font-semibold">Waktu Daftar</th>
+                                <th class="px-6 py-3 font-semibold text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=random" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-800">Budi Santoso</p>
+                                            <p class="text-xs text-slate-500">Anggota Biasa</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-mono text-slate-600 text-xs">327104151186****</td>
+                                <td class="px-6 py-4 text-slate-600">Kota Bogor</td>
+                                <td class="px-6 py-4 text-slate-500 text-xs">Hari ini, 09:14 WIB</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-lg bg-green-50 text-green-600 hover:bg-green-500 hover:text-white transition flex items-center justify-center" title="Setujui">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Tolak">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center justify-center" title="Detail Profil">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <img src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=random" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-800">Ahmad Fauzi</p>
+                                            <p class="text-xs text-slate-500">Pengurus Daerah</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-mono text-slate-600 text-xs">317201220490****</td>
+                                <td class="px-6 py-4 text-slate-600">Kota Depok</td>
+                                <td class="px-6 py-4 text-slate-500 text-xs">Kemarin, 14:30 WIB</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-lg bg-green-50 text-green-600 hover:bg-green-500 hover:text-white transition flex items-center justify-center" title="Setujui">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-500 hover:text-white transition flex items-center justify-center" title="Tolak">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition flex items-center justify-center" title="Detail Profil">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 text-slate-400 py-6 mt-auto text-center text-sm">
+        &copy; 2026 PRISMA. Hak Cipta Dilindungi.
+    </footer>
+
+</body>
+</html>

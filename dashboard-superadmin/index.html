@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin - Manajemen Ormas & Pengurus Nasional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans">
+
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        
+        <!-- Sidebar Super Admin (Kiri) -->
+        <aside class="w-full lg:w-64 bg-slate-950 text-slate-400 flex flex-col shadow-xl border-r border-slate-800">
+            <div class="p-5 text-xl font-bold border-b border-slate-800 flex items-center gap-2 text-indigo-400">
+                <i class="fas fa-circle-nodes"></i> ROOT SYSTEM
+            </div>
+            <nav class="flex-grow p-4 space-y-1.5">
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-600 px-4 pt-2">Kandungan Data</div>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 bg-indigo-950 text-indigo-200 rounded-lg font-semibold transition">
+                    <i class="fas fa-chart-line w-5"></i> Agregat Ormas & Daerah
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-900 hover:text-white rounded-lg transition">
+                    <i class="fas fa-layer-group w-5"></i> Manajemen User Admin
+                </a>
+
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-600 px-4 pt-4">Sistem & Keamanan</div>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-900 hover:text-white rounded-lg transition">
+                    <i class="fas fa-database w-5"></i> Database & Cloud Backup
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-900 hover:text-white rounded-lg transition">
+                    <i class="fas fa-shield-halved w-5"></i> Audit Log Forensik
+                </a>
+            </nav>
+            <div class="p-4 border-t border-slate-800">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-2 bg-red-950 hover:bg-red-900 rounded-lg text-center text-red-200 font-medium transition text-xs">
+                    <i class="fas fa-power-off"></i> Tutup Sesi Root
+                </a>
+            </div>
+        </aside>
+
+        <!-- Konten Utama (Kanan) -->
+        <main class="flex-grow p-6 md:p-10">
+            
+            <!-- Header Panel -->
+            <header class="flex justify-between items-center mb-8 flex-wrap gap-4">
+                <div>
+                    <h1 class="text-3xl font-bold text-white tracking-tight">Konsol Agregasi Data Nasional</h1>
+                    <p class="text-sm text-slate-400">Otoritas penuh pemetaan ormas terdaftar dan audit kuantitas kepengurusan berjenjang.</p>
+                </div>
+                <!-- Status Server Metrics -->
+                <div class="flex items-center gap-3 bg-slate-900 border border-slate-800 px-4 py-2 rounded-xl text-xs">
+                    <div class="flex items-center gap-1.5 text-green-400">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span> DB Sync: OK
+                    </div>
+                    <span class="text-slate-600">|</span>
+                    <span class="text-slate-400">User: <strong>SuperAdmin_01</strong></span>
+                </div>
+            </header>
+
+            <!-- Counter Utama Kuantitas Nasional -->
+            <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+                <!-- Total Ormas -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-bold uppercase">Total Entitas Ormas</p>
+                        <p class="text-2xl font-black text-white mt-1">4,312 <span class="text-xs font-normal text-slate-500">Organisasi</span></p>
+                    </div>
+                    <div class="bg-indigo-950/50 border border-indigo-900 p-3 rounded-lg text-indigo-400"><i class="fas fa-landmark text-xl"></i></div>
+                </div>
+                <!-- Pengurus Provinsi -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-bold uppercase">Pengurus Prov (DPD)</p>
+                        <p class="text-2xl font-black text-white mt-1">1,156 <span class="text-xs font-normal text-slate-500">Badan</span></p>
+                    </div>
+                    <div class="bg-purple-950/50 border border-purple-900 p-3 rounded-lg text-purple-400"><i class="fas fa-map text-xl"></i></div>
+                </div>
+                <!-- Pengurus Kabupaten -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-bold uppercase">Pengurus Kab (DPC)</p>
+                        <p class="text-2xl font-black text-white mt-1">14,210 <span class="text-xs font-normal text-slate-500">Badan</span></p>
+                    </div>
+                    <div class="bg-blue-950/50 border border-blue-900 p-3 rounded-lg text-blue-400"><i class="fas fa-tree-city text-xl"></i></div>
+                </div>
+                <!-- Pengurus Kota -->
+                <div class="bg-slate-900 p-5 rounded-xl border border-slate-800 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-bold uppercase">Pengurus Kota (DPC)</p>
+                        <p class="text-2xl font-black text-white mt-1">3,480 <span class="text-xs font-normal text-slate-500">Badan</span></p>
+                    </div>
+                    <div class="bg-emerald-950/50 border border-emerald-900 p-3 rounded-lg text-emerald-400"><i class="fas fa-city text-xl"></i></div>
+                </div>
+            </section>
+
+            <!-- Tabel Data Utama Manajemen Global -->
+            <div class="bg-slate-900 rounded-xl border border-slate-800 p-6">
+                <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                    <div>
+                        <h2 class="text-md font-bold text-white flex items-center gap-2">
+                            <i class="fas fa-database text-indigo-400"></i> Master Registry Ormas & Pengurus Berjenjang
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-0.5">Akses pengubahan status, hapus entitas ilegal, dan peninjauan total struktur regional.</p>
+                    </div>
+                    <!-- Master Filter -->
+                    <div class="flex gap-2">
+                        <input type="text" placeholder="Cari Ormas / Nomor Hukum..." class="bg-slate-950 text-xs border border-slate-800 rounded-lg px-3 py-2 outline-none w-52 focus:border-indigo-500">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold px-3 py-2 rounded-lg transition">
+                            <i class="fas fa-sliders mr-1"></i> Global Filter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Sinkronisasi Tabel -->
+                <div class="overflow-x-auto text-sm">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-slate-500 text-xs uppercase border-b border-slate-800 bg-slate-950/40">
+                                <th class="p-3">Nama Organisasi / Dokumen Hukum</th>
+                                <th class="p-3 text-center text-indigo-400 bg-indigo-950/20 font-bold border-x border-slate-800">Provinsi (DPD)</th>
+                                <th class="p-3 text-center text-blue-400 bg-blue-950/20 font-bold border-r border-slate-800">Kabupaten (DPC)</th>
+                                <th class="p-3 text-center text-emerald-400 bg-emerald-950/20 font-bold border-r border-slate-800">Kota (DPC)</th>
+                                <th class="p-3 text-center">Total Pengurus</th>
+                                <th class="p-3 text-right">Root Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 text-slate-300">
+                            <!-- Ormas Row 1 -->
+                            <tr class="hover:bg-slate-900/50 transition">
+                                <td class="p-3">
+                                    <p class="font-bold text-white">Yayasan Pemuda Merdeka Indonesia</p>
+                                    <p class="text-[11px] font-mono text-slate-500">AHU-001294.AH.01.04 // Kategori: Kepemudaan</p>
+                                </td>
+                                <!-- Kuantitas Hierarki -->
+                                <td class="p-3 text-center bg-indigo-950/10 font-mono font-bold text-indigo-400 border-x border-slate-800">34</td>
+                                <td class="p-3 text-center bg-blue-950/10 font-mono font-bold text-blue-400 border-r border-slate-800">415</td>
+                                <td class="p-3 text-center bg-emerald-950/10 font-mono font-bold text-emerald-400 border-r border-slate-800">93</td>
+                                <!-- Total Akumulatif -->
+                                <td class="p-3 text-center font-bold text-white">
+                                    542 <span class="text-[10px] text-slate-500 font-normal block">Badan Aktif</span>
+                                </td>
+                                <td class="p-3 text-right">
+                                    <div class="flex justify-end gap-1.5">
+                                        <button class="text-slate-500 hover:text-amber-400 p-1.5" title="Ubah Hak Data"><i class="fas fa-user-pen"></i></button>
+                                        <button class="text-slate-500 hover:text-red-500 p-1.5" title="Hapus Permanen (Root Delete)"><i class="fas fa-trash-can"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Ormas Row 2 -->
+                            <tr class="hover:bg-slate-900/50 transition">
+                                <td class="p-3">
+                                    <p class="font-bold text-white">Perkumpulan Peduli Lingkungan Hijau</p>
+                                    <p class="text-[11px] font-mono text-slate-500">210/SKT/DG-PUM/2021 // Kategori: Lingkungan</p>
+                                </td>
+                                <!-- Kuantitas Hierarki -->
+                                <td class="p-3 text-center bg-indigo-950/10 font-mono font-bold text-indigo-400 border-x border-slate-800">12</td>
+                                <td class="p-3 text-center bg-blue-950/10 font-mono font-bold text-blue-400 border-r border-slate-800">74</td>
+                                <td class="p-3 text-center bg-emerald-950/10 font-mono font-bold text-emerald-400 border-r border-slate-800">18</td>
+                                <!-- Total Akumulatif -->
+                                <td class="p-3 text-center font-bold text-white">
+                                    104 <span class="text-[10px] text-slate-500 font-normal block">Badan Aktif</span>
+                                </td>
+                                <td class="p-3 text-right">
+                                    <div class="flex justify-end gap-1.5">
+                                        <button class="text-slate-500 hover:text-amber-400 p-1.5"><i class="fas fa-user-pen"></i></button>
+                                        <button class="text-slate-500 hover:text-red-500 p-1.5"><i class="fas fa-trash-can"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISMA | Sistem Manajemen Anggota</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 group cursor-pointer">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-lg group-hover:rotate-6 transition-transform">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tighter text-slate-800">PRISMA</span>
+                </div>
+
+                <div class="hidden md:flex space-x-8 font-medium text-sm text-slate-600">
+                    <a href="#beranda" class="hover:text-blue-600 transition-colors">Beranda</a>
+                    <a href="#alur" class="hover:text-blue-600 transition-colors">Alur Pendaftaran</a>
+                    <a href="#pencarian" class="hover:text-blue-600 transition">Pencarian Anggota</a>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <a href="/login" class="hidden sm:block bg-slate-100 text-slate-700 px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-200 transition">Login</a>
+                    <button id="mobile-menu-button" class="md:hidden text-slate-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3">
+            <a href="#beranda" class="block text-slate-600 font-medium">Beranda</a>
+            <a href="#alur" class="block text-slate-600 font-medium">Alur Pendaftaran</a>
+            <a href="#pencarian" class="hover:text-blue-600 transition">Pencarian Anggota</a>
+            <a href="#cetak-kta" class="hover:text-blue-600 transition-colors">Cetak E-KTA</a>
+            <a href="/login" class="block text-blue-600 font-bold">Login</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="beranda" class="relative pt-20 pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block bg-blue-100 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider animate-bounce">
+                    Digitalisasi Organisasi
+                </span>
+                <h1 class="mt-6 text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                    Bangun Sinergi, <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                        Daftarkan Anggota Anda Secara Digital.
+                    </span>
+                </h1>
+                <p class="mt-6 text-lg text-slate-600 max-w-2xl mx-auto">
+                    Platform pendaftaran resmi mandiri. Proses verifikasi cepat, transparan, dan akses langsung ke E-KTA digital dari perangkat Anda.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/daftar" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 shadow-xl shadow-blue-200 transition-all transform hover:-translate-y-1">
+                        Daftar Anggota Baru <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#alur" class="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
+                        Pelajari Alur
+                    </a>
+                </div>
+            </div>
+            
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-0 opacity-20 pointer-events-none">
+                <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-[120px]"></div>
+                <div class="absolute bottom-10 right-10 w-96 h-96 bg-indigo-400 rounded-full blur-[120px]"></div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-8 rounded-2xl bg-slate-50 border border-transparent hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-bolt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Proses Cepat</h3>
+                        <p class="text-slate-600 leading-relaxed">Pendaftaran mandiri online memudahkan anggota bergabung kapan saja dan di mana saja.</p>
+                    </div>
+                    
+                    <div class="p-8 rounded-2xl bg-white shadow-xl border border-blue-100 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-2 h-full bg-blue-600"></div>
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-id-card text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">E-Card Digital</h3>
+                        <p class="text-slate-600 leading-relaxed">Kartu Anggota otomatis dihasilkan setelah verifikasi admin selesai dilakukan.</p>
+                    </div>
+
+                    <div class="p-8 rounded-2xl bg-slate-50 border border-transparent hover:border-blue-200 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="w-14 h-14 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shield-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Keamanan Data</h3>
+                        <p class="text-slate-600 leading-relaxed">Data NIK dan dokumen pribadi dilindungi dengan protokol enkripsi standar industri.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="alur" class="py-20 bg-slate-50">
+            <div class="max-w-4xl mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-extrabold mb-4">Tahapan Pendaftaran</h2>
+                    <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+                </div>
+                
+                <div class="relative space-y-12">
+                    <div class="hidden md:block absolute left-[23px] top-4 bottom-4 w-0.5 bg-slate-200 border-l-2 border-dashed border-blue-300"></div>
+
+                    <div class="flex items-start gap-6 relative">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-lg shadow-blue-200">1</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow">
+                            <h4 class="text-xl font-bold mb-2">Isi Formulir Online</h4>
+                            <p class="text-slate-600">Siapkan KTP dan foto profil. Masukkan data diri secara akurat pada form yang tersedia.</p>
+                        </div>
+                    </di
+
+                    <div class="flex items-start gap-6 relative">
+                        <div class="flex-shrink-0 w-12 h-12 bg-cyan-600 text-white rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-lg shadow-blue-200">2</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow">
+                            <h4 class="text-xl font-bold mb-2">Verifikasi Admin</h4>
+                            <p class="text-slate-600">Tim admin akan memverifikasi data Anda dalam waktu maksimal 2x24 jam kerja.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-6 relative">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-500 text-white rounded-full flex items-center justify-center font-bold text-xl z-10 shadow-lg shadow-green-100">3</div>
+                        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex-grow border-b-4 border-green-500">
+                            <h4 class="text-xl font-bold mb-2 text-green-600">Unduh E-Card</h4>
+                            <p class="text-slate-600">Setelah disetujui, login kembali untuk mengunduh Kartu Anggota Digital Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="pencarian" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-xl">
+                    <h2 class="text-3xl font-extrabold text-slate-900">Pencarian Anggota</h2>
+                    <p class="mt-4 text-slate-600">Verifikasi keaslian anggota PRISMA melalui basis data pusat kami secara real-time.</p>
+                </div>
+                <div class="w-full md:w-96">
+                    <div class="relative">
+                        <input type="text" placeholder="Cari Nama atau No. Anggota..." 
+                            class="w-full pl-12 pr-4 py-3 rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none shadow-sm transition">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-900 text-white">
+                                <th class="px-6 py-4 text-sm font-semibold uppercase tracking-wider">Anggota</th>
+                                <th class="px-6 py-4 text-sm font-semibold uppercase tracking-wider">ID Anggota</th>
+                                <th class="px-6 py-4 text-sm font-semibold uppercase tracking-wider">Wilayah</th>
+                                <th class="px-6 py-4 text-sm font-semibold uppercase tracking-wider">Status</th>
+                                <th class="px-6 py-4 text-sm font-semibold uppercase tracking-wider text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold">
+                                            MP
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-800">Muhammad Prisma</p>
+                                            <p class="text-xs text-slate-500">Bergabung: Jan 2026</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-mono text-sm text-slate-600">PR-2026.001</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Jakarta Selatan</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Aktif
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 font-semibold text-sm transition">Detail</button>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 font-bold">
+                                            AD
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-800">Andi Darmawan</p>
+                                            <p class="text-xs text-slate-500">Bergabung: Feb 2026</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 font-mono text-sm text-slate-600">PR-2026.042</td>
+                                <td class="px-6 py-4 text-sm text-slate-600">Bandung Utara</td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-700">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Masa Tenggang
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-center">
+                                    <button class="text-blue-600 hover:text-blue-800 font-semibold text-sm transition">Detail</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex justify-between items-center text-sm text-slate-500">
+                    <p>Menampilkan 2 dari 1.240 Anggota</p>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1 border border-slate-200 rounded hover:bg-white transition disabled:opacity-50" disabled>Prev</button>
+                        <button class="px-3 py-1 border border-slate-200 rounded hover:bg-white transition">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendaftaran-baru" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-extrabold text-slate-900 tracking-tight">Formulir Pendaftaran</h2>
+                <p class="mt-4 text-slate-600">Lengkapi data di bawah ini dengan benar untuk memproses keanggotaan Anda.</p>
+            </div>
+
+            <form action="#" method="POST" class="bg-white border border-slate-200 shadow-2xl shadow-slate-200/50 rounded-3xl overflow-hidden">
+                <div class="bg-slate-50 border-b border-slate-100 px-8 py-4 flex justify-between items-center">
+                    <span class="text-sm font-bold text-blue-600 uppercase tracking-widest">Informasi Pribadi</span>
+                    <span class="text-xs text-slate-400">Langkah 1 dari 2</span>
+                </div>
+
+                <div class="p-8 md:p-12 space-y-8">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">Nama Lengkap (Sesuai KTP)</label>
+                            <input type="text" placeholder="Masukkan nama lengkap" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">NIK (16 Digit)</label>
+                            <input type="number" placeholder="Contoh: 3271xxxxxxxx" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">Email Aktif</label>
+                            <input type="email" placeholder="nama@email.com" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">No.Telepon/Handphone</label>
+                            <input type="tel" placeholder="081234567890" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-sm font-semibold text-slate-700">Jabatan / Posisi</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50 text-slate-600">
+                                <option value="">Pilih Jabatan</option>
+                                <option value="pengurus">Pengurus Pusat</option>
+                                <option value="daerah">Pengurus Daerah</option>
+                                <option value="anggota">Anggota</option>
+                            </select>
+                            <label class="text-sm font-semibold text-slate-700">Provinsi</label>
+                            <select disabled class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50 text-slate-600">
+                                <option value="">Pilih Provinsi</option>
+                                <option value="provinsi">Provinsi</option>
+                            </select>
+                            <label class="text-sm font-semibold text-slate-700">Kabupaten/Kota</label>
+                            <select disabled class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50 text-slate-600">
+                                <option value="">Pilih Kabupaten/Kota</option>
+                                <option value="kabupaten">Kabupaten</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-sm font-semibold text-slate-700">Alamat Domisili</label>
+                        <textarea rows="3" placeholder="Jl. Nama Jalan, No. Rumah, RT/RW, Kecamatan..." 
+                            class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition bg-slate-50/50"></textarea>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 pt-4">
+                        <div class="space-y-4">
+                            <label class="text-sm font-semibold text-slate-700 block">Foto KTP (Jelas & Terbaca)</label>
+                            <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center hover:border-blue-400 transition cursor-pointer group">
+                                <i class="fas fa-id-card text-3xl text-slate-300 group-hover:text-blue-500 mb-2"></i>
+                                <p class="text-xs text-slate-500">Klik untuk unggah atau seret file ke sini</p>
+                                <input type="file" class="hidden">
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <label class="text-sm font-semibold text-slate-700 block">Foto Profil (Background Merah/Biru)</label>
+                            <div class="border-2 border-dashed border-slate-200 rounded-2xl p-6 text-center hover:border-blue-400 transition cursor-pointer group">
+                                <i class="fas fa-camera text-3xl text-slate-300 group-hover:text-blue-500 mb-2"></i>
+                                <p class="text-xs text-slate-500">Format JPG/PNG, Maksimal 2MB</p>
+                                <input type="file" class="hidden">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-3 pt-4">
+                        <input type="checkbox" id="terms" class="w-5 h-5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer">
+                        <label for="terms" class="text-sm text-slate-600 cursor-pointer italic">Saya menyatakan bahwa data yang diisi adalah benar dan dapat dipertanggungjawabkan.</label>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 px-8 py-6 border-t border-slate-100 flex flex-col sm:flex-row justify-end gap-4">
+                    <button type="reset" class="px-8 py-3 rounded-xl font-bold text-slate-500 hover:bg-slate-200 transition">Reset</button>
+                    <button type="submit" class="px-10 py-3 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 shadow-lg shadow-blue-200 transition-all transform active:scale-95">
+                        Kirim Pendaftaran <i class="fas fa-paper-plane ml-2 text-sm"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center items-center gap-2 mb-6">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white">
+                    <i class="fas fa-users"></i>
+                </div>
+                <span class="text-2xl font-bold text-white tracking-tight">PRISMA</span>
+            </div>
+            <p class="max-w-md mx-auto mb-10">Solusi manajemen database keanggotaan terintegrasi untuk organisasi modern.</p>
+            
+            <div class="flex justify-center gap-6 mb-10">
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-facebook-f text-xl"></i></a>
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-whatsapp text-xl"></i></a>
+            </div>
+
+            <div class="pt-8 border-t border-slate-800 text-sm">
+                &copy; 2026 PRISMA System. All rights reserved. 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

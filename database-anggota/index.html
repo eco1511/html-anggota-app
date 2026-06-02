@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Anggota | PRISMA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 min-h-screen flex flex-col">
+
+    <!-- Top Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                        <i class="fas fa-shield-alt text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xl font-bold tracking-tighter text-slate-800 leading-none mt-1">PRISMA</span>
+                        <span class="text-[10px] font-semibold text-indigo-600 tracking-widest uppercase">Admin Panel</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-5">
+                    <div class="relative cursor-pointer text-slate-400 hover:text-indigo-600 transition">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500 border-2 border-white"></span>
+                        </span>
+                    </div>
+
+                    <div class="h-8 w-px bg-slate-200 mx-2"></div>
+
+                    <!-- Profile -->
+                    <div class="hidden sm:flex flex-col items-end mr-2">
+                        <span class="text-sm font-bold text-slate-800">Admin</span>
+                        <span class="text-xs text-indigo-600 font-medium">Administrator</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=e0e7ff&color=4f46e5" alt="Profile" class="w-10 h-10 rounded-full border-2 border-white shadow-sm cursor-pointer">
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Layout -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col lg:flex-row gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="w-full lg:w-64 flex-shrink-0">
+            <div class="bg-white rounded-2xl border border-slate-200 p-4 sticky top-24 shadow-sm">
+                <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4 px-3">Menu Admin</div>
+                <nav class="space-y-1.5">
+                    <a href="#dashboard" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-chart-pie w-5"></i> Ringkasan</div>
+                    </a>
+                    <a href="#verifikasi" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-user-check w-5"></i> Verifikasi Anggota</div>
+                        <span class="bg-red-100 text-red-600 py-0.5 px-2 rounded-full text-xs font-bold">12</span>
+                    </a>
+                    <a href="#database" class="flex items-center gap-3 px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-xl font-semibold transition">
+                        <i class="fas fa-database w-5"></i> Database Anggota
+                    </a>
+                    <a href="#pengajuan" class="flex items-center justify-between px-3 py-2.5 text-slate-600 hover:bg-slate-50 hover:text-indigo-600 rounded-xl font-medium transition">
+                        <div class="flex items-center gap-3"><i class="fas fa-exchange-alt w-5"></i> Mutasi & Status</div>
+                        <span class="bg-amber-100 text-amber-600 py-0.5 px-2 rounded-full text-xs font-bold">3</span>
+                    </a>
+                
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="flex-grow flex flex-col">
+            
+            <div class="mb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-900">Database Anggota</h1>
+                    <p class="text-slate-500 text-sm mt-1">Kelola dan cari data anggota aktif secara menyeluruh.</p>
+                </div>
+                <button class="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 shadow-md shadow-indigo-100 transition-all text-sm flex items-center gap-2">
+                    <i class="fas fa-user-plus"></i> Tambah Manual
+                </button>
+            </div>
+
+            <!-- Filter & Search Bar -->
+            <div class="bg-white p-4 rounded-3xl border border-slate-200 shadow-sm mb-6 flex flex-col lg:flex-row gap-4 items-center">
+                <div class="relative w-full lg:w-96 shrink-0">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-slate-400"></i>
+                    </div>
+                    <input type="text" placeholder="Cari Nama, NIK, atau ID Anggota..." 
+                        class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition">
+                </div>
+                
+                <div class="w-full flex gap-3 overflow-x-auto pb-2 lg:pb-0 hide-scrollbar">
+                    <select class="px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 shrink-0">
+                        <option value="">Semua Wilayah</option>
+                        <option value="jabar">Jawa Barat</option>
+                        <option value="dki">DKI Jakarta</option>
+                        <option value="banten">Banten</option>
+                    </select>
+                    
+                    <select class="px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 shrink-0">
+                        <option value="">Semua Jabatan</option>
+                        <option value="biasa">Anggota Biasa</option>
+                        <option value="daerah">Pengurus Daerah</option>
+                        <option value="pusat">Pengurus Pusat</option>
+                    </select>
+
+                    <button class="px-4 py-2.5 bg-white border border-slate-200 text-slate-600 font-semibold rounded-xl hover:bg-slate-50 transition text-sm flex items-center gap-2 shrink-0 ml-auto">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex-grow flex flex-col">
+                <div class="overflow-x-auto flex-grow">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200">
+                                <th class="px-6 py-4 font-semibold">ID Anggota</th>
+                                <th class="px-6 py-4 font-semibold">Profil Anggota</th>
+                                <th class="px-6 py-4 font-semibold">Domisili</th>
+                                <th class="px-6 py-4 font-semibold">Jabatan</th>
+                                <th class="px-6 py-4 font-semibold">Status</th>
+                                <th class="px-6 py-4 font-semibold text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-sm">
+                            
+                            <!-- Row 1 -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4 font-mono font-bold text-indigo-700">PR-2026.001</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=eff6ff&color=4f46e5" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-900">Budi Santoso</p>
+                                            <p class="text-[11px] text-slate-500 font-mono">NIK: 3271041511860001</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">Kota Bogor, Jawa Barat</td>
+                                <td class="px-6 py-4">
+                                    <span class="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">Anggota Biasa</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition flex items-center justify-center" title="Cetak KTA">
+                                            <i class="fas fa-id-card"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white transition flex items-center justify-center" title="Edit Profil">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Row 2 -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4 font-mono font-bold text-indigo-700">PR-2026.002</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <img src="https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=eff6ff&color=4f46e5" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-900">Ahmad Fauzi</p>
+                                            <p class="text-[11px] text-slate-500 font-mono">NIK: 3172012204900004</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">Kota Depok, Jawa Barat</td>
+                                <td class="px-6 py-4">
+                                    <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-md border border-indigo-200">Pengurus Daerah</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700 border border-emerald-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition flex items-center justify-center" title="Cetak KTA">
+                                            <i class="fas fa-id-card"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white transition flex items-center justify-center" title="Edit Profil">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                            <!-- Row 3 -->
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-6 py-4 font-mono font-bold text-indigo-700">PR-2026.003</td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <img src="https://ui-avatars.com/api/?name=Siti+Aminah&background=eff6ff&color=4f46e5" alt="Avatar">
+                                        </div>
+                                        <div>
+                                            <p class="font-bold text-slate-900">Siti Aminah</p>
+                                            <p class="text-[11px] text-slate-500 font-mono">NIK: 3201021405920002</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-slate-600">Jakarta Selatan, DKI Jakarta</td>
+                                <td class="px-6 py-4">
+                                    <span class="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">Anggota Biasa</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-700 border border-amber-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Suspend
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex justify-center gap-2">
+                                        <button class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white transition flex items-center justify-center" title="Cetak KTA">
+                                            <i class="fas fa-id-card"></i>
+                                        </button>
+                                        <button class="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-800 hover:text-white transition flex items-center justify-center" title="Edit Profil">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Footer -->
+                <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 shrink-0">
+                    <p class="text-sm text-slate-500 font-medium">Menampilkan <span class="font-bold text-slate-900">1 - 3</span> dari <span class="font-bold text-slate-900">1,240</span> anggota</p>
+                    <div class="flex gap-2">
+                        <button class="px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-slate-400 hover:bg-slate-50 transition shadow-sm" disabled>
+                            <i class="fas fa-chevron-left text-xs"></i>
+                        </button>
+                        <button class="px-3 py-1.5 border border-slate-200 rounded-lg bg-indigo-600 text-white font-bold transition shadow-sm">1</button>
+                        <button class="px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-slate-600 hover:bg-slate-50 transition shadow-sm">2</button>
+                        <button class="px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-slate-600 hover:bg-slate-50 transition shadow-sm">3</button>
+                        <span class="px-2 py-1.5 text-slate-400">...</span>
+                        <button class="px-3 py-1.5 border border-slate-200 rounded-lg bg-white text-slate-600 hover:bg-slate-50 transition shadow-sm">
+                            <i class="fas fa-chevron-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 text-slate-400 py-6 mt-auto text-center text-sm">
+        &copy; 2026 PRISMA.
+    </footer>
+
+</body>
+</html>
